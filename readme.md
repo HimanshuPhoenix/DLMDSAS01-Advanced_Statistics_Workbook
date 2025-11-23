@@ -26,13 +26,13 @@ Based on the sources provided, here is the output from the parameter generator, 
   ξ10: 
     4, 123, 255, 37, 28*
 
- Assignment 4
+ *Assignment 4*
 
-  *ξ11: 904 <br>
+  ξ11: 904 <br>
   ξ12: 62.3 <br>
   ξ13: 2 <br>
   ξ14: 
-    922, 915, 911, 894, 923, 919, 927, 911, 896, 894*
+    922, 915, 911, 894, 923, 919, 927, 911, 896, 894
 
  Assignment 5
   
