@@ -20,7 +20,7 @@ Based on the sources provided, here is the output from the parameter generator, 
   ξ7: 0.70 <br>
   ξ8: 3*
  
- Assignment 3
+ *Assignment 3*
  
   *ξ9: 2 <br>
   ξ10: 
