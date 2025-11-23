@@ -8,7 +8,7 @@ Based on the sources provided, here is the output from the parameter generator, 
  This web-page generates parameters that changes the exercise assignments of the workbook guidelines. Any number that appears there should be replaced by a generated number provided by this service. Note that numbers can be expressed in decimal form, in scientific notation, in fractions, or as repeating decimal (with a bar on top).
  You can use this generating service as many times as you want, so that you can exercise. However, once settled down, please copy the signature and numbers and include it within your submitted assignment.
 
- Assignment 1
+ Assignment 1 <br>
   *ξ1: 3 ξ2: 0.61*
  Assignment 2
   *ξ4: 0 ξ5: 0.29 ξ6: 8 ξ7: 0.70 ξ8: 3*
