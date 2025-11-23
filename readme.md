@@ -3,8 +3,6 @@
 
 Based on the sources provided, here is the output from the parameter generator, preserving the formatting as uploaded in the source documents:
 
-maths
-```
 
 # Advanced Statistics (DLMDSAS01): Parameters Generator
  This web-page generates parameters that changes the exercise assignments of the workbook guidelines. Any number that appears there should be replaced by a generated number provided by this service. Note that numbers can be expressed in decimal form, in scientific notation, in fractions, or as repeating decimal (with a bar on top).
@@ -26,4 +24,3 @@ maths
  signature
  6bc547274ca79f20d522a744aafa677fcbf7002b
  This service and web-page are programmed for the IU International University of Applied Sciences. Questions should be sent to paul.libbrecht@iu.org,
-```
