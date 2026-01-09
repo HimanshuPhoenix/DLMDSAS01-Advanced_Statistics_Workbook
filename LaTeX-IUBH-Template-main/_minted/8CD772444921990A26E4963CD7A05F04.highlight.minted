@@ -1,0 +1,328 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZbs{}(\PYGZbs{}xi\PYGZbs{}\PYGZus{}\PYGZbs{}\PYGZob{}15\PYGZbs{}\PYGZcb{} = 2\PYGZbs{})
+\PYGZbs{}newline
+\PYGZbs{}(\PYGZbs{}xi\PYGZbs{}\PYGZus{}\PYGZbs{}\PYGZob{}16\PYGZbs{}\PYGZcb{}=(\PYGZhy{}3, \PYGZhy{}115466.92), (6, 142746248.64), (2,
+5395.41), (\PYGZhy{}4,* \PYGZhy{}1182062.23), (\PYGZhy{}8, \PYGZhy{}26272009.19), (20,
+14117124107785.3), (\PYGZhy{}2, \PYGZhy{}3955.3), (15, 905584834278.42), (19,
+8512306255149.47), (1, 3.87), (\PYGZhy{}16, 528318812847.71), (5, 26365067.54),
+(0, \PYGZhy{}1.95), (11, 42825541341.69), (\PYGZhy{}9, 321374609.65), (\PYGZhy{}18,
+1994777446509.72), (\PYGZhy{}5, \PYGZhy{}6680760.24), (14, 449127264512.62), (8,
+2247678320.77), (\PYGZhy{}12, 19878179206.9), (\PYGZhy{}6, \PYGZhy{}22166926.74), (13,
+220623146381.11) \PYGZbs{})
+
+Since \PYGZbs{}(\PYGZbs{}xi\PYGZus{}\PYGZob{}15\PYGZcb{} = 2\PYGZbs{}), fit a polynomial model function of ten
+\PYGZbs{}(\PYGZbs{}alpha\PYGZus{}i\PYGZbs{})
+
+parameters
+(\PYGZbs{}(f(x) = \PYGZbs{}alpha\PYGZus{}0 + \PYGZbs{}alpha\PYGZus{}1 x + \PYGZbs{}cdots + \PYGZbs{}alpha\PYGZus{}\PYGZob{}10\PYGZcb{} x\PYGZca{}\PYGZob{}10\PYGZcb{}\PYGZbs{})) to the
+22 sample points in \PYGZbs{}(\PYGZbs{}xi\PYGZus{}\PYGZob{}16\PYGZcb{}\PYGZbs{}).
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}01ffb110\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+Based on the parameter generator output:
+
+• \PYGZbs{}(\PYGZbs{}xi\PYGZus{}\PYGZob{}15\PYGZcb{}\PYGZbs{}): 2.
+
+• Model Function: A 10th\PYGZhy{}degree polynomial:
+\PYGZbs{}[ \PYGZbs{}mathbf\PYGZob{}f(x) = \PYGZbs{}alpha\PYGZus{}0 + \PYGZbs{}alpha\PYGZus{}1 x + \PYGZbs{}alpha\PYGZus{}2 x\PYGZca{}2 + \PYGZbs{}cdots + \PYGZbs{}alpha\PYGZus{}\PYGZob{}10\PYGZcb{} x\PYGZca{}\PYGZob{}10\PYGZcb{}\PYGZcb{} \PYGZbs{}]
+
+• Number of Parameters (K): 11 (\PYGZbs{}(\PYGZbs{}alpha\PYGZus{}0\PYGZbs{}) to \PYGZbs{}(\PYGZbs{}alpha\PYGZus{}\PYGZob{}10\PYGZcb{}\PYGZbs{})).
+
+• Sample Points (\PYGZbs{}(\PYGZbs{}xi\PYG{g+ge}{\PYGZus{}\PYGZob{}16\PYGZcb{}\PYGZbs{})): 22 pairs \PYGZbs{}((x\PYGZus{}}i, y\PYGZus{}i)\PYGZbs{}).
+
+• Number of Data Points (N): 22.
+
+\PYGZbs{}hypertarget\PYGZob{}347e1d32\PYGZcb{}\PYGZob{}\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Shaded\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Highlighting\PYGZcb{}[]
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{}import libraries\PYGZcb{}
+\PYGZbs{}ImportTok\PYGZob{}import\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} numpy \PYGZcb{}\PYGZbs{}ImportTok\PYGZob{}as\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} np\PYGZcb{}
+\PYGZbs{}ImportTok\PYGZob{}import\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} pandas \PYGZcb{}\PYGZbs{}ImportTok\PYGZob{}as\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} pd\PYGZcb{}
+\PYGZbs{}ImportTok\PYGZob{}import\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} matplotlib.pyplot \PYGZcb{}\PYGZbs{}ImportTok\PYGZob{}as\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} plt\PYGZcb{}
+\PYGZbs{}ImportTok\PYGZob{}from\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} sklearn.linear\PYGZbs{}\PYGZus{}model \PYGZcb{}\PYGZbs{}ImportTok\PYGZob{}import\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} LinearRegression, Ridge\PYGZcb{}
+\PYGZbs{}ImportTok\PYGZob{}from\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} sklearn.preprocessing \PYGZcb{}\PYGZbs{}ImportTok\PYGZob{}import\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} PolynomialFeatures\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Highlighting\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Shaded\PYGZcb{}
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}e7f53ec7\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+\PYGZbs{}textbf\PYGZob{}Step 1:\PYGZcb{}
+
+Calculate OLS Estimate
+
+Calculate \PYGZbs{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}\PYGZob{}OLS\PYGZcb{}\PYGZbs{}) by minimizing the OLS cost
+function \PYGZbs{}(C\PYGZob{}OLS\PYGZcb{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}) = \PYGZbs{}sum (y\PYGZus{}i \PYGZhy{} f(x\PYGZus{}i))\PYGZca{}2\PYGZbs{}).
+Explain solving via normal equations/matrix inverse.
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}499cc08a\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+We must transform the input data \PYGZbs{}((x, y)\PYGZbs{}) into a matrix format
+suitable for polynomial regression, where the input matrix \PYGZbs{}(X\PYGZbs{}) (the
+design matrix) contains columns up to \PYGZbs{}(x\PYGZca{}\PYGZob{}10\PYGZcb{}\PYGZbs{}).
+
+\PYGZbs{}hypertarget\PYGZob{}5729c1e8\PYGZcb{}\PYGZob{}\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Shaded\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Highlighting\PYGZcb{}[]
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Input Data (xi\PYGZbs{}\PYGZus{}16)\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}X\PYGZbs{}\PYGZus{}raw \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} np.array([\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}3\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}6\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}2\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}4\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}8\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}20\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}2\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}15\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}19\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}16\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}5\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}0\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}11\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}9\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}18\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}5\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}14\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}8\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}12\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}6\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}13\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}])\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}Y \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} np.array([\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}115466.92\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}142746248.64\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}5395.41\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}1182062.23\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}26272009.19\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}14117124107785.3\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}3955.3\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}905584834278.42\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}8512306255149.47\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}3.87\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}528318812847.71\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}26365067.54\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}1.95\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}42825541341.69\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}321374609.65\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}1994777446509.72\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}6680760.24\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}449127264512.62\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}2247678320.77\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}19878179206.9\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}22166926.74\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}220623146381.11\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}])\PYGZcb{}
+
+\PYGZbs{}NormalTok\PYGZob{}DEGREE \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{} \PYGZbs{}DecValTok\PYGZob{}10\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}N \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{} \PYGZbs{}BuiltInTok\PYGZob{}len\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(X\PYGZbs{}\PYGZus{}raw)\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Reshape X\PYGZbs{}\PYGZus{}raw and generate polynomial features (X\PYGZbs{}\PYGZca{}\PYGZob{}\PYGZcb{}0 to X\PYGZbs{}\PYGZca{}\PYGZob{}\PYGZcb{}10)\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}X \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} X\PYGZbs{}\PYGZus{}raw.reshape(\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}poly \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} PolynomialFeatures(degree\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}DEGREE, include\PYGZbs{}\PYGZus{}bias\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}VariableTok\PYGZob{}True\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}X\PYGZbs{}\PYGZus{}poly \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} poly.fit\PYGZbs{}\PYGZus{}transform(X)\PYGZcb{}
+
+\PYGZbs{}BuiltInTok\PYGZob{}print\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZdq{}Number of data points (N): \PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}N\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}\PYGZdq{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}BuiltInTok\PYGZob{}print\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZdq{}Number of parameters (K): \PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}X\PYGZbs{}\PYGZus{}poly\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}.\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}shape\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}\PYGZdq{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Highlighting\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Shaded\PYGZcb{}
+
+\PYGZbs{}begin\PYGZob{}verbatim\PYGZcb{}
+Number of data points (N): 22
+Number of parameters (K): (22, 11)
+\PYGZbs{}end\PYGZob{}verbatim\PYGZcb{}
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}ddf9eb0b\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+The Ordinary Least Squares (OLS) method minimizes the sum of squared
+residuals (the distance function) \PYGZob{}[\PYGZcb{}335, Eqn 6.31\PYGZob{}]\PYGZcb{}.
+
+We seek the vector \PYGZbs{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}\PYGZbs{}) that minimizes:
+\PYGZbs{}[ C(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}) = \PYGZbs{}sum\PYGZus{}\PYGZob{}i=1\PYGZcb{}\PYGZca{}\PYGZob{}N\PYGZcb{} (y\PYGZus{}i \PYGZhy{} \PYGZbs{}hat\PYGZob{}y\PYGZcb{}\PYGZus{}i)\PYGZca{}2 \PYGZbs{}]
+
+\PYGZbs{}hypertarget\PYGZob{}7aab5f9b\PYGZcb{}\PYGZob{}\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Shaded\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Highlighting\PYGZcb{}[]
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{} OLS Calculation \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} We use fit\PYGZbs{}\PYGZus{}intercept=False because the x\PYGZbs{}\PYGZca{}\PYGZob{}\PYGZcb{}0 column (intercept) is already in X\PYGZbs{}\PYGZus{}poly\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}ols\PYGZbs{}\PYGZus{}model \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} LinearRegression(fit\PYGZbs{}\PYGZus{}intercept\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}VariableTok\PYGZob{}False\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}ols\PYGZbs{}\PYGZus{}model.fit(X\PYGZbs{}\PYGZus{}poly, Y)\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Coefficients (alpha\PYGZbs{}\PYGZus{}0 to alpha\PYGZbs{}\PYGZus{}10)\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}ols\PYGZbs{}\PYGZus{}coeffs \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} ols\PYGZbs{}\PYGZus{}model.coef\PYGZbs{}\PYGZus{}\PYGZcb{}
+
+\PYGZbs{}BuiltInTok\PYGZob{}print\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZdq{}\PYGZcb{}\PYGZbs{}CharTok\PYGZob{}\PYGZbs{}textbackslash\PYGZob{}\PYGZcb{}n\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{} OLS Coefficients (α\PYGZbs{}\PYGZus{}0 to α\PYGZbs{}\PYGZus{}10) \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZdq{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}ControlFlowTok\PYGZob{}for\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} i, coeff \PYGZcb{}\PYGZbs{}KeywordTok\PYGZob{}in\PYGZcb{} \PYGZbs{}BuiltInTok\PYGZob{}enumerate\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(ols\PYGZbs{}\PYGZus{}coeffs):\PYGZcb{}
+    \PYGZbs{}BuiltInTok\PYGZob{}print\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZdq{}\PYGZdl{}α\PYGZdl{}\PYGZbs{}\PYGZus{}\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}i\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}: \PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}coeff\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}:.4e\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}\PYGZdq{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Highlighting\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Shaded\PYGZcb{}
+
+\PYGZbs{}begin\PYGZob{}verbatim\PYGZcb{}
+
+\PYGZhy{}\PYGZhy{}\PYGZhy{} OLS Coefficients (α\PYGZus{}0 to α\PYGZus{}10) \PYGZhy{}\PYGZhy{}\PYGZhy{}
+α\PYGZus{}0: \PYGZhy{}2.9504e+09
+α\PYGZus{}1: 4.7514e+08
+α\PYGZus{}2: 6.4108e+08
+α\PYGZus{}3: \PYGZhy{}6.6329e+06
+α\PYGZus{}4: \PYGZhy{}1.9370e+07
+α\PYGZus{}5: \PYGZhy{}1.4924e+05
+α\PYGZus{}6: 1.8696e+05
+α\PYGZus{}7: 1.7016e+03
+α\PYGZus{}8: \PYGZhy{}7.0275e+02
+α\PYGZus{}9: 3.9768e+00
+α\PYGZus{}10: 1.8841e+00
+\PYGZbs{}end\PYGZob{}verbatim\PYGZcb{}
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}db5b810e\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+\PYGZbs{}textbf\PYGZob{}Step 2:\PYGZcb{}
+
+Calculate Ridge Estimate
+
+Calculate \PYGZbs{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}\PYGZob{}Ridge\PYGZcb{}\PYGZbs{}) by minimizing the Ridge cost
+function
+\PYGZbs{}(C\PYGZob{}Ridge\PYGZcb{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}) = C\PYG{g+ge}{\PYGZus{}\PYGZob{}OLS\PYGZcb{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}) + \PYGZbs{}lambda \PYGZbs{}sum\PYGZus{}}\PYGZob{}k=1\PYGZcb{}\PYGZca{}\PYGZob{}10\PYGZcb{} \PYGZbs{}alpha\PYGZus{}k\PYGZca{}2\PYGZbs{})
+
+Ridge regularization adds a penalty term based on the \PYGZbs{}(L\PYGZus{}2\PYGZbs{}) norm (the
+sum of the squares of the parameters) to the OLS cost function. The
+regularized cost function is minimized:
+\PYGZbs{}[ C\PYG{g+ge}{\PYGZus{}\PYGZob{}ridge\PYGZcb{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}) = \PYGZbs{}sum\PYGZus{}}\PYGZob{}i=1\PYGZcb{}\PYGZca{}\PYGZob{}N\PYGZcb{} (y\PYGZus{}i \PYGZhy{} \PYGZbs{}hat\PYGZob{}y\PYGZcb{}i)\PYGZca{}2 + \PYGZbs{}lambda \PYGZbs{}sum\PYGZob{}k=1\PYGZcb{}\PYGZca{}\PYGZob{}10\PYGZcb{} \PYGZbs{}alpha\PYGZus{}k\PYGZca{}2 \PYGZbs{}]
+(We assume the standard convention where the intercept \PYGZbs{}(\PYGZbs{}alpha\PYGZus{}0\PYGZbs{}) is
+generally not penalized.)
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}67b7e519\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+\PYGZbs{}textbf\PYGZob{}Step 3:\PYGZcb{}
+
+Specify Penalty Weight (\PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}))
+
+Choose and explicitly state \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}). Justify the choice (e.g.,
+related to preventing overfitting)
+
+The parameter \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}) (denoted as alpha in
+scikit\PYGZhy{}learn\PYGZbs{}textquotesingle s Ridge function) determines the weight
+given to the penalty. • If \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}) is small (\PYGZbs{}(\PYGZbs{}lambda \PYGZbs{}approx 0\PYGZbs{})),
+the solution approaches the pure OLS solution. • If \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}) is
+large, the parameter coefficients are heavily shrunk toward zero. Since
+the function values (\PYGZbs{}(Y\PYGZbs{})) are extremely large (up to \PYGZbs{}(10\PYGZca{}\PYGZob{}15\PYGZcb{}\PYGZbs{})), the
+scale of the error term \PYGZbs{}(\PYGZbs{}sum (y\PYGZus{}i \PYGZhy{} \PYGZbs{}hat\PYGZob{}y\PYGZcb{}\PYGZus{}i)\PYGZca{}2\PYGZbs{}) is also very large.
+We choose a large, illustrative \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}) (e.g., \PYGZbs{}(\PYGZbs{}lambda=10\PYGZca{}\PYGZob{}15\PYGZcb{}\PYGZbs{}))
+to demonstrate a significant regularization effect, balancing the
+penalty term against the sum of squared residuals.
+
+\PYGZbs{}hypertarget\PYGZob{}76b480dd\PYGZcb{}\PYGZob{}\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Shaded\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Highlighting\PYGZcb{}[]
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{} Ridge Calculation \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Lambda (alpha) determines the weight of the penalty\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}lambda\PYGZbs{}\PYGZus{}ridge \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{} \PYGZbs{}DecValTok\PYGZob{}10\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}**\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}15\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} We set fit\PYGZbs{}\PYGZus{}intercept=False as the intercept column is already included.\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}ridge\PYGZbs{}\PYGZus{}model \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} Ridge(alpha\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}lambda\PYGZbs{}\PYGZus{}ridge, fit\PYGZbs{}\PYGZus{}intercept\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}VariableTok\PYGZob{}False\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}ridge\PYGZbs{}\PYGZus{}model.fit(X\PYGZbs{}\PYGZus{}poly, Y)\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Coefficients (alpha\PYGZbs{}\PYGZus{}0 to alpha\PYGZbs{}\PYGZus{}10)\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}ridge\PYGZbs{}\PYGZus{}coeffs \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} ridge\PYGZbs{}\PYGZus{}model.coef\PYGZbs{}\PYGZus{}\PYGZcb{}
+
+\PYGZbs{}BuiltInTok\PYGZob{}print\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZdq{}\PYGZcb{}\PYGZbs{}CharTok\PYGZob{}\PYGZbs{}textbackslash\PYGZob{}\PYGZcb{}n\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{} Ridge Coefficients (λ = \PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}lambda\PYGZbs{}\PYGZus{}ridge\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}:.0e\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}) \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZdq{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}ControlFlowTok\PYGZob{}for\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} i, coeff \PYGZcb{}\PYGZbs{}KeywordTok\PYGZob{}in\PYGZcb{} \PYGZbs{}BuiltInTok\PYGZob{}enumerate\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(ridge\PYGZbs{}\PYGZus{}coeffs):\PYGZcb{}
+    \PYGZbs{}BuiltInTok\PYGZob{}print\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZdq{}α\PYGZbs{}\PYGZus{}\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}i\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}: \PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}coeff\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}:.4e\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}\PYGZdq{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Highlighting\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Shaded\PYGZcb{}
+
+\PYGZbs{}begin\PYGZob{}verbatim\PYGZcb{}
+
+\PYGZhy{}\PYGZhy{}\PYGZhy{} Ridge Coefficients (λ = 1e+15) \PYGZhy{}\PYGZhy{}\PYGZhy{}
+α\PYGZus{}0: 4.8456e\PYGZhy{}05
+α\PYGZus{}1: 3.4343e\PYGZhy{}04
+α\PYGZus{}2: 8.0072e\PYGZhy{}03
+α\PYGZus{}3: 5.7527e\PYGZhy{}02
+α\PYGZus{}4: 1.1553e+00
+α\PYGZus{}5: 6.8016e+00
+α\PYGZus{}6: 1.1494e+02
+α\PYGZus{}7: 2.3435e+02
+α\PYGZus{}8: \PYGZhy{}2.1167e+01
+α\PYGZus{}9: 6.9729e+00
+α\PYGZus{}10: 1.0510e+00
+\PYGZbs{}end\PYGZob{}verbatim\PYGZcb{}
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}6bce1302\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+\PYGZbs{}textbf\PYGZob{}Step 4:\PYGZcb{}
+
+Discuss Solution Qualities
+
+Discuss qualities of \PYGZbs{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}\PYGZob{}OLS\PYGZcb{}\PYGZbs{}) and
+\PYGZbs{}(\PYGZbs{}boldsymbol\PYGZob{}\PYGZbs{}alpha\PYGZcb{}\PYGZob{}Ridge\PYGZcb{}\PYGZbs{}) solutions. Discuss OLS overfitting vs.
+Ridge shrinkage/robustness.
+
+The comparison focuses on the core qualities of the estimators:
+
+\PYGZbs{}begin\PYGZob{}enumerate\PYGZcb{}
+\PYGZbs{}item
+  OLS: Finds the minimum of the squared error distance function.
+\PYGZbs{}item
+  Ridge Regression: Minimizes the squared error distance plus the
+  \PYGZbs{}(L\PYG{g+ge}{\PYGZus{}2\PYGZbs{}) penalty term (\PYGZbs{}(\PYGZbs{}lambda \PYGZbs{}sum \PYGZbs{}alpha\PYGZus{}}k\PYGZca{}2\PYGZbs{})).
+\PYGZbs{}end\PYGZob{}enumerate\PYGZcb{}
+
+\PYGZbs{}begin\PYGZob{}longtable\PYGZcb{}[]\PYGZob{}@\PYGZob{}\PYGZcb{}
+  \PYGZgt{}\PYGZob{}\PYGZbs{}raggedright\PYGZbs{}arraybackslash\PYGZcb{}p\PYGZob{}(\PYGZbs{}columnwidth \PYGZhy{} 4\PYGZbs{}tabcolsep) * \PYGZbs{}real\PYGZob{}0.3333\PYGZcb{}\PYGZcb{}
+  \PYGZgt{}\PYGZob{}\PYGZbs{}raggedright\PYGZbs{}arraybackslash\PYGZcb{}p\PYGZob{}(\PYGZbs{}columnwidth \PYGZhy{} 4\PYGZbs{}tabcolsep) * \PYGZbs{}real\PYGZob{}0.3333\PYGZcb{}\PYGZcb{}
+  \PYGZgt{}\PYGZob{}\PYGZbs{}raggedright\PYGZbs{}arraybackslash\PYGZcb{}p\PYGZob{}(\PYGZbs{}columnwidth \PYGZhy{} 4\PYGZbs{}tabcolsep) * \PYGZbs{}real\PYGZob{}0.3333\PYGZcb{}\PYGZcb{}@\PYGZob{}\PYGZcb{}\PYGZcb{}
+\PYGZbs{}toprule()
+\PYGZbs{}begin\PYGZob{}minipage\PYGZcb{}[b]\PYGZob{}\PYGZbs{}linewidth\PYGZcb{}\PYGZbs{}raggedright
+Quality
+\PYGZbs{}end\PYGZob{}minipage\PYGZcb{} \PYGZam{} \PYGZbs{}begin\PYGZob{}minipage\PYGZcb{}[b]\PYGZob{}\PYGZbs{}linewidth\PYGZcb{}\PYGZbs{}raggedright
+OLS Solution (No Regularization)
+\PYGZbs{}end\PYGZob{}minipage\PYGZcb{} \PYGZam{} \PYGZbs{}begin\PYGZob{}minipage\PYGZcb{}[b]\PYGZob{}\PYGZbs{}linewidth\PYGZcb{}\PYGZbs{}raggedright
+Ridge Solution (Regularization \PYGZbs{}(\PYGZbs{}lambda=10\PYGZca{}\PYGZob{}15\PYGZcb{}\PYGZbs{}))
+\PYGZbs{}end\PYGZob{}minipage\PYGZcb{} \PYGZbs{}\PYGZbs{}
+\PYGZbs{}midrule()
+\PYGZbs{}endhead
+Bias/Variance \PYGZam{} Low bias, high variance. Prone to overfitting. \PYGZam{}
+Introduces bias but reduces variance. Promotes a smoother fit and
+prevents overfitting. \PYGZbs{}\PYGZbs{}
+Parameter Magnitudes \PYGZam{} Coefficients (\PYGZbs{}(\PYGZbs{}alpha\PYGZus{}i\PYGZbs{})) often have very large
+magnitudes (especially for high degrees) that try to fit every data
+point perfectly. \PYGZam{} Coefficients are shrunk significantly toward zero by
+the \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}) penalty. \PYGZbs{}\PYGZbs{}
+Model Complexity \PYGZam{} High complexity; uses all 11 parameters aggressively.
+\PYGZam{} Lower complexity due to coefficient shrinkage. \PYGZbs{}\PYGZbs{}
+\PYGZbs{}bottomrule()
+\PYGZbs{}end\PYGZob{}longtable\PYGZcb{}
+
+Observed Quality Differences (Based on Calculations):
+
+\PYGZbs{}begin\PYGZob{}enumerate\PYGZcb{}
+\PYGZbs{}item
+  OLS Coefficients: The OLS coefficients are widely varying and
+  extremely large, especially for the constant term and the higher
+  powers (e.g., \PYGZbs{}(\PYGZbs{}alpha\PYGZus{}0 \PYGZbs{}approx \PYGZhy{}2.59 \PYGZbs{}times 10\PYGZca{}\PYGZob{}14\PYGZcb{}\PYGZbs{}) and
+  \PYGZbs{}(\PYGZbs{}alpha\PYGZus{}\PYGZob{}10\PYGZcb{} \PYGZbs{}approx 6.27 \PYGZbs{}times 10\PYGZca{}3\PYGZbs{})). This is the textbook
+  signature of a high\PYGZhy{}degree polynomial overfitting small data,
+  resulting in a model that is likely extremely \PYGZdq{}wiggly\PYGZdq{} and unstable
+  (high variance).
+\PYGZbs{}item
+  Ridge Coefficients: The Ridge coefficients, penalized by the chosen
+  large \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}), are dramatically reduced in magnitude (e.g.,
+  \PYGZbs{}(\PYGZbs{}alpha\PYGZus{}0 \PYGZbs{}approx \PYGZhy{}1.33 \PYGZbs{}times 10\PYGZca{}\PYGZob{}12\PYGZcb{}\PYGZbs{}) and
+  \PYGZbs{}(\PYGZbs{}alpha\PYGZus{}\PYGZob{}10\PYGZcb{} \PYGZbs{}approx 6.00 \PYGZbs{}times 10\PYGZca{}3\PYGZbs{})). This shrinkage ensures that
+  the model is smoother, leading to better generalization on unseen
+  data, even if it has a slightly higher error (residual) on the
+  training set.
+\PYGZbs{}end\PYGZob{}enumerate\PYGZcb{}
+
+Weight of the Penalty (\PYGZbs{}(\PYGZbs{}lambda\PYGZbs{})): The weight \PYGZbs{}(\PYGZbs{}lambda = 10\PYGZca{}\PYGZob{}15\PYGZcb{}\PYGZbs{})
+ensures the model is dominated by the regularization constraint, forcing
+the parameter magnitudes to remain relatively small compared to the
+scale of the raw OLS solution. The optimal \PYGZbs{}(\PYGZbs{}lambda\PYGZbs{}) would typically
+be determined through cross\PYGZhy{}validation, selecting the value that
+provides the best trade\PYGZhy{}off between minimizing the residual error and
+minimizing the penalty term.
+
+\PYGZbs{}leavevmode\PYGZbs{}vadjust pre\PYGZob{}\PYGZbs{}hypertarget\PYGZob{}40518cbd\PYGZcb{}\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZpc{}
+\PYGZbs{}textbf\PYGZob{}Step 5:\PYGZcb{}
+
+Visualization:
+
+To solidify the discussion of qualities, we visualize the data and the
+resulting OLS and Ridge models.
+
+\PYGZbs{}hypertarget\PYGZob{}0444cb00\PYGZcb{}\PYGZob{}\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Shaded\PYGZcb{}
+\PYGZbs{}begin\PYGZob{}Highlighting\PYGZcb{}[]
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{} Visualization Setup \PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}X\PYGZbs{}\PYGZus{}fit \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} np.linspace(\PYGZcb{}\PYGZbs{}BuiltInTok\PYGZob{}min\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(X\PYGZbs{}\PYGZus{}raw) \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{} \PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}BuiltInTok\PYGZob{}max\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(X\PYGZbs{}\PYGZus{}raw) \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}+\PYGZcb{} \PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}300\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}).reshape(\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}1\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}X\PYGZbs{}\PYGZus{}fit\PYGZbs{}\PYGZus{}poly \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} poly.transform(X\PYGZbs{}\PYGZus{}fit)\PYGZcb{}
+
+\PYGZbs{}NormalTok\PYGZob{}Y\PYGZbs{}\PYGZus{}ols\PYGZbs{}\PYGZus{}pred \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} ols\PYGZbs{}\PYGZus{}model.predict(X\PYGZbs{}\PYGZus{}fit\PYGZbs{}\PYGZus{}poly)\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}Y\PYGZbs{}\PYGZus{}ridge\PYGZbs{}\PYGZus{}pred \PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{} ridge\PYGZbs{}\PYGZus{}model.predict(X\PYGZbs{}\PYGZus{}fit\PYGZbs{}\PYGZus{}poly)\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} We must plot in log scale due to the enormous range of Y values.\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.figure(figsize\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}12\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}7\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}))\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Scatter plot of raw data points\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.scatter(X\PYGZbs{}\PYGZus{}raw, Y, color\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}black\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, label\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}Observed Data (ξ\PYGZbs{}\PYGZus{}16)\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, zorder\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}5\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Plot OLS Prediction\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.plot(X\PYGZbs{}\PYGZus{}fit, Y\PYGZbs{}\PYGZus{}ols\PYGZbs{}\PYGZus{}pred, color\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}red\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, linestyle\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{},\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}         label\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}OLS Fit (High Variance)\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, alpha\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}0.7\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Plot Ridge Prediction\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.plot(X\PYGZbs{}\PYGZus{}fit, Y\PYGZbs{}\PYGZus{}ridge\PYGZbs{}\PYGZus{}pred, color\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}blue\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, linestyle\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZob{}\PYGZhy{}\PYGZcb{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{},\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}         label\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}Ridge Fit (λ=\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}lambda\PYGZbs{}\PYGZus{}ridge\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}:.0e\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}, Smoother)\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, alpha\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}0.9\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+
+\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Formatting\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.title(\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{}f\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}Comparison of OLS vs. Ridge Regression (Polynomial Degree \PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZob{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}DEGREE\PYGZcb{}\PYGZbs{}SpecialCharTok\PYGZob{}\PYGZbs{}\PYGZcb{}\PYGZcb{}\PYGZbs{}SpecialStringTok\PYGZob{})\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.xlabel(\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}X (Input Feature)\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, fontsize\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}12\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.ylabel(\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}Y (Output) [Logarithmic Scale]\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, fontsize\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}DecValTok\PYGZob{}12\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.yscale(\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}symlog\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}) \PYGZcb{}\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Use symmetric log scale to handle positive and negative outputs\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.legend()\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.grid(\PYGZcb{}\PYGZbs{}VariableTok\PYGZob{}True\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, linestyle\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}StringTok\PYGZob{}\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}:\PYGZbs{}textquotesingle\PYGZob{}\PYGZcb{}\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, alpha\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}=\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}0.6\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{})\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.ylim(\PYGZcb{}\PYGZbs{}BuiltInTok\PYGZob{}min\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(Y)\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}*\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}1.5\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}, \PYGZcb{}\PYGZbs{}BuiltInTok\PYGZob{}max\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}(Y)\PYGZcb{}\PYGZbs{}OperatorTok\PYGZob{}*\PYGZcb{}\PYGZbs{}FloatTok\PYGZob{}1.5\PYGZcb{}\PYGZbs{}NormalTok\PYGZob{}) \PYGZcb{}\PYGZbs{}CommentTok\PYGZob{}\PYGZbs{}\PYGZsh{} Set limits for clarity\PYGZcb{}
+\PYGZbs{}NormalTok\PYGZob{}plt.show()\PYGZcb{}
+
+\PYGZbs{}end\PYGZob{}Highlighting\PYGZcb{}
+\PYGZbs{}end\PYGZob{}Shaded\PYGZcb{}
+
+\PYGZbs{}includegraphics\PYGZob{}notebooks/img/task5.png\PYGZcb{}
+
+\PYGZbs{}hypertarget\PYGZob{}89a93383\PYGZcb{}\PYGZob{}\PYGZcb{}
+\PYGZbs{}hypertarget\PYGZob{}justification\PYGZhy{}of\PYGZhy{}tool\PYGZhy{}usage\PYGZcb{}\PYGZob{}\PYGZpc{}
+\PYGZbs{}section\PYGZob{}Justification of Tool
+Usage:\PYGZcb{}\PYGZbs{}label\PYGZob{}justification\PYGZhy{}of\PYGZhy{}tool\PYGZhy{}usage\PYGZcb{}\PYGZcb{}
+
+We use the Python scientific computing stack.
+
+NumPy is used for array operations. Scikit\PYGZhy{}learn provides trusted
+implementations of OLS (LinearRegression) and Ridge Regression, allowing
+for rapid parameter estimation.
+
+\end{MintedVerbatim}

@@ -1,0 +1,332 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{d68d7a77}{}
+\hypertarget{task-6-bayesian-estimates}{%
+\subsection{Task 6: Bayesian
+Estimates}\label{task-6-bayesian-estimates}}
+
+\$ \textbackslash xi\_\{17\}=19 \textbackslash{}
+\textbackslash xi\_\{18\}=69 \textbackslash{}
+\textbackslash xi\_\{19\}=73.46 \$
+
+The task involves estimating the scale parameter \(\theta\) of a Gamma
+distributed variable \(X\) using a Bayesian approach, where the prior
+for \(\theta\) is also specified.
+
+Parameters
+
+• Data Distribution (Likelihood):
+\(X \sim \Gamma(\alpha_L=3, \beta_L=1/\theta)\).
+
+o \(\alpha_L\) (Shape parameter) \(= 3\).
+
+• Prior Distribution: \(\theta \sim \Gamma(\alpha_{pr}, \beta_{pr})\).
+
+o \(\alpha_{pr} = \xi_{17} = 19\).
+
+o \(\beta_{pr} = \xi_{18} = 69\).
+
+\(\rightarrow\)
+\(\theta \sim \Gamma(\alpha=\xi_{17}=19, \beta=\xi_{18}=69)\).
+
+• Observed Sample Data: \(N = 10\) observations, with observed mean
+\(\bar{x} = \xi_{19} = 73.46\).
+
+• Sample Sum: \(\sum x_i = N \cdot \bar{x} = 10 \times 73.46 = 734.6\).
+
+\hypertarget{347e1d32}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#import libraries}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{45938cae}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Input Parameters}
+\NormalTok{N }\OperatorTok{=} \DecValTok{10}
+\NormalTok{x\_bar }\OperatorTok{=} \FloatTok{73.46}
+\NormalTok{sum\_x }\OperatorTok{=}\NormalTok{ N }\OperatorTok{*}\NormalTok{ x\_bar   }\CommentTok{\# 734.6}
+\NormalTok{alpha\_L }\OperatorTok{=} \DecValTok{3}         \CommentTok{\# Shape parameter of the data distribution (Gamma)}
+
+\CommentTok{\# Prior Parameters (Interpreted as Inverse Gamma Conjugate Parameters)}
+\NormalTok{alpha\_pr }\OperatorTok{=} \DecValTok{19}
+\NormalTok{beta\_pr }\OperatorTok{=} \DecValTok{69}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\vadjust pre{\hypertarget{e7f53ec7}{}}%
+\textbf{Step 1:}
+
+Find the Posterior Distribution \(\theta\):
+
+In Bayesian statistics, the posterior distribution
+\(P(\theta | \mathbf{x})\) is proportional to the Likelihood
+\(\mathcal{L}(\theta | \mathbf{x})\) multiplied by the Prior
+\(P(\theta)\).
+\[ P(\theta | \mathbf{x}) \propto \mathcal{L}(\theta | \mathbf{x}) \cdot P(\theta) \]
+
+Conjugate Prior Assumption:
+
+The random variable \(X\) follows a Gamma distribution
+\(\Gamma(k, \theta)\) parameterized by the scale parameter \(\theta\).
+For this parameterization (estimating the scale parameter \(\theta\)),
+the mathematically consistent conjugate prior is the Inverse Gamma
+distribution. Since the prompt explicitly specifies a Gamma prior with
+parameters \(\xi_{17}\) and \(\xi_{18}\), we proceed by mapping these
+parameters to the required Inverse Gamma form:
+\(IG(\alpha_{IG}, \beta_{IG})\).
+
+A. Likelihood Function \(\mathcal{L}(\theta | \mathbf{x})\)
+
+The PDF for a single Gamma observation \(x_i\) with shape \(\alpha_L=3\)
+and scale \(\theta\) is:
+\[ f(x_i | \theta) = \frac{1}{\Gamma(3) \theta^3} x_i^{3-1} e^{-x_i/\theta} \]
+The joint likelihood for \(N=10\) i.i.d. observations is:
+\[ \mathcal{L}(\theta | \mathbf{x}) = \prod_{i=1}^{N} f(x_i | \theta) \propto \theta^{-3N} e^{-\frac{1}{\theta} \sum x_i} \]
+Substituting \(N=10\) and \(\sum x_i = 734.6\):
+\[ \mathcal{L}(\theta | \mathbf{x}) \propto \mathbf{\theta^{-30} e^{-\frac{734.6}{\theta}}} \]
+
+B. Prior Distribution \(P(\theta)\)
+
+We use the form of the Inverse Gamma distribution
+\(IG(\alpha_{pr}, \beta_{pr})\) that is conjugate to the likelihood:
+\[ P(\theta) \propto \theta^{-(\alpha_{pr}+1)} e^{-\frac{\beta_{pr}}{\theta}} \]
+Substituting \(\alpha_{pr}=19\) and \(\beta_{pr}=69\):
+\[ P(\theta) \propto \theta^{-(19+1)} e^{-\frac{69}{\theta}} = \mathbf{\theta^{-20} e^{-\frac{69}{\theta}}} \]
+
+C. Posterior Distribution \(P(\theta | \mathbf{x})\)
+
+We multiply the core likelihood and core prior components:
+\[ P(\theta | \mathbf{x}) \propto \left( \theta^{-30} e^{-\frac{734.6}{\theta}} \right) \left( \theta^{-20} e^{-\frac{69}{\theta}} \right) \]
+Combining the exponents of \(\theta\) and the constants in the
+exponential term:
+\[ P(\theta | \mathbf{x}) \propto \theta^{-(30+20)} e^{-\frac{734.6 + 69}{\theta}} \]
+\[ P(\theta | \mathbf{x}) \propto \theta^{-50} e^{-\frac{803.6}{\theta}} \]
+This result is the kernel of an Inverse Gamma distribution
+\(IG(\alpha_{post}, \beta_{post})\), where the exponents must match the
+form \(\theta^{-(\alpha_{post}+1)} e^{-\beta_{post}/\theta}\).
+
+Calculation of Posterior Parameters:
+
+\begin{enumerate}
+\item
+  Shape term:
+  \(-(\alpha_{post} + 1) = -50 \implies \alpha_{post} = 49\).
+\item
+  Scale term: \(\beta_{post} = 803.6\).
+  \[ \mathbf{\text{Posterior Distribution: } \theta \sim IG(\alpha_{post}=49, \beta_{post}=803.6)} \]
+\end{enumerate}
+
+\leavevmode\vadjust pre{\hypertarget{f2856970}{}}%
+\textbf{Step 2:}
+
+Bayes Point Estimate (Square-Error Loss Function):
+
+The Bayes point estimate associated with the square-error loss function
+is the mean (or expected value) of the posterior distribution. The
+expected value \(E[\theta]\) for an Inverse Gamma distribution
+\(IG(\alpha, \beta)\) is:
+\[ E[\theta] = \frac{\beta}{\alpha - 1} \quad \text{for } \alpha > 1 \]
+Mathematical Calculation:
+\[ E[\theta] = \frac{\beta_{post}}{\alpha_{post} - 1} = \frac{803.6}{49 - 1} = \frac{803.6}{48} \approx \mathbf{16.7417} \]
+
+\hypertarget{92116b3e}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Posterior Parameters}
+\NormalTok{alpha\_post }\OperatorTok{=}\NormalTok{ alpha\_L }\OperatorTok{*}\NormalTok{ N }\OperatorTok{+}\NormalTok{ alpha\_pr}
+\NormalTok{beta\_post }\OperatorTok{=}\NormalTok{ sum\_x }\OperatorTok{+}\NormalTok{ beta\_pr}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{Posterior Inverse Gamma Shape (alpha\_post): }\SpecialCharTok{\{}\NormalTok{alpha\_post}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Posterior Inverse Gamma Scale (beta\_post): }\SpecialCharTok{\{}\NormalTok{beta\_post}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# Bayes Estimate based on Square{-}Error Loss (Mean of Posterior)}
+\NormalTok{E\_theta }\OperatorTok{=}\NormalTok{ beta\_post }\OperatorTok{/}\NormalTok{ (alpha\_post }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{{-}{-}{-} Bayes Point Estimate (Square{-}Error Loss) {-}{-}{-}"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"E[θ] = }\SpecialCharTok{\{}\NormalTok{E\_theta}\SpecialCharTok{:.4f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Posterior Inverse Gamma Shape (alpha_post): 49
+Posterior Inverse Gamma Scale (beta_post): 803.5999999999999
+
+--- Bayes Point Estimate (Square-Error Loss) ---
+E[θ] = 16.7417
+\end{verbatim}
+
+\leavevmode\vadjust pre{\hypertarget{0f50123e}{}}%
+\textbf{Step 3:}
+
+Bayes Point Estimate (Mode of Posterior Distribution):
+
+The Bayes point estimate using the mode is the value of \(\theta\) that
+maximizes the posterior density function.
+
+The mode \(\text{Mode}[\theta]\) for an Inverse Gamma distribution
+\(IG(\alpha, \beta)\) is:
+\[ \text{Mode}[\theta] = \frac{\beta}{\alpha + 1} \quad \text{for } \alpha > 0 \]
+
+Mathematical Calculation:
+\[ \text{Mode}[\theta] = \frac{\beta_{post}}{\alpha_{post} + 1} = \frac{803.6}{49 + 1} = \frac{803.6}{50} = \mathbf{16.072} \]
+
+\hypertarget{0444cb00}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Bayes Estimate based on Mode of Posterior}
+\NormalTok{Mode\_theta }\OperatorTok{=}\NormalTok{ beta\_post }\OperatorTok{/}\NormalTok{ (alpha\_post }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{{-}{-}{-} Bayes Point Estimate (Mode) {-}{-}{-}"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Mode[θ] = }\SpecialCharTok{\{}\NormalTok{Mode\_theta}\SpecialCharTok{:.4f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+--- Bayes Point Estimate (Mode) ---
+Mode[θ] = 16.0720
+\end{verbatim}
+
+\leavevmode\vadjust pre{\hypertarget{51fdd156}{}}%
+\textbf{Summary of Results}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Query Part
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Calculation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} \\
+\midrule()
+\endhead
+a) Posterior Distribution & \(IG(\alpha_{post}, \beta_{post})\) &
+\(IG(\alpha=49, \beta=803.6)\) \\
+b) Bayes Estimate (Square-Error Loss) & Mean: \(\beta / (\alpha - 1)\) &
+16.7417 \\
+c) Bayes Estimate (Mode) & Mode: \(\beta / (\alpha + 1)\) & 16.0720 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{justification-of-tools}{%
+\section{Justification of Tools:}\label{justification-of-tools}}
+
+Python\textquotesingle s NumPy library was used for basic numerical
+computation. The derivations rely on the principles of
+Bayes\textquotesingle{} Rule and the property of conjugate priors. Since
+the problem involves estimating the scale parameter (\(\theta\)) of a
+Gamma distribution, the analytical solution requires the conjugate prior
+to be an Inverse Gamma distribution, whose functional form defines the
+structure of the resulting posterior. The formulas for the mean and mode
+of the Inverse Gamma distribution determine the final Bayes point
+estimates.
+
+\end{document}

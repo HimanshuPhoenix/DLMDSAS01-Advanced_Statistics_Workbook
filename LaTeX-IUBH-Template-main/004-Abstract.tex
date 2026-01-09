@@ -1,0 +1,18 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\vspace*{-25pt}
+This workbook documents the comprehensive application of core concepts in \emph{Advanced Statistics (DLMDSAS01)}, covering probability distributions, parameter estimation, hypothesis testing, and Bayesian statistics, utilizing a personalized dataset specified by the $\xi$ parameters.
+\newline
+The initial tasks involved fundamental analysis of probability distributions and descriptive visualization:
+\begin{itemize}
+    \item \textbf{Task 1} analyzed basic probabilities and visualizations. Since $\xi_1 = 3$, the task involved modeling the number of meteorites falling into an ocean using a \emph{geometric distribution} counting the number of Bernoulli trials until success, with $p = \xi_2 = 0.61$. This task required calculating the probability mass function (PMF) up to the point where the probability drops below $0.5\%$, calculating the \emph{expectation} and \emph{median}, and displaying these results graphically.
+    \item \textbf{Task 2} derived the \emph{Probability Density Function (PDF)}, computed the waiting time probability, and analyzed the location and dispersion parameters (mean, variance, and quartiles) for a continuous waiting time variable ($Y$) modeled by a mixture of exponential functions. This task included visualizing the PDF and a discrete histogram.
+    \item \textbf{Task 3} applied the theory of \emph{Transformed Random Variables} to derive the Gamma distribution of the total failure bandwidth ($T = S_1 + S_2$) for a dual-router system, based on the assumption of independent and identically distributed (i.i.d.) router failures. The model parameter ($\theta$) was estimated using \emph{Maximum Likelihood Estimation (MLE)} by maximizing the derived log-likelihood function.
+\end{itemize}
+The subsequent tasks demonstrated advanced inferential and predictive modeling techniques:
+\begin{itemize}
+    \item \textbf{Task 4} performed a \emph{Hypothesis Test} to assess whether a new factory system produced significantly higher hammer weights ($\mu_{new} > 904$ g), as mandated by $\xi_{13}=2$. This involved proposing null ($H_0$) and alternative ($H_1$) hypotheses, constructing the Z-score test statistic, defining a decision rule based on critical values, and calculating error probabilities.
+    \item \textbf{Task 5} tackled model complexity and overfitting through \emph{Regularized Regression}, fitting a \emph{10th-degree polynomial} (as $\xi_{15}=2$) to highly variable sample data ($\xi_{16}$). Solutions derived using Ordinary Least Squares (OLS) were explicitly contrasted with the shrinkage effect achieved via \emph{Ridge regularization} (L2 penalty), emphasizing the trade-off between bias and variance.
+    \item \textbf{Task 6} focused on \emph{Bayesian Estimation}, determining the posterior distribution of the scale parameter ($\theta$) for a Gamma distributed variable. Utilizing the property of \emph{conjugate priors} (Inverse Gamma family), the posterior distribution was derived and used to calculate Bayes point estimates associated with both the square-error loss function (mean) and the mode of the posterior distribution.
+\end{itemize}
+The methodology throughout employed rigorous mathematical derivation and utilized Python tools for computation, estimation, and comprehensive \emph{data visualization}. This report successfully demonstrated proficiency in applying and interpreting both frequentist and Bayesian approaches to statistical inference.

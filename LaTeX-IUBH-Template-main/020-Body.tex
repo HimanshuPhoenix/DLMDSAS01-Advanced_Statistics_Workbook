@@ -1,0 +1,138 @@
+\includepdf[
+    %% Include all pages of the PDF
+    pages=-,
+    %% make this page have the usual page style
+    %% (you can change it to plain etc). By default pdfpages
+    %% sets the pagecommand to \pagestyle{empty}
+    pagecommand={\pagestyle{headings}},  
+    %% Add a "section" entry to the ToC with the heading
+    %% "Quilling Shapes" and the label "sec:shapes"
+    addtotoc={1,chapter,1,Task 1: Basic Probabilities and Visualizations - 1,chap:task1_pdf,
+        1,section,1,Defining Model,sec:task1_Define_Model,
+        1,section,1,Computing E{[X]},sec:task1_Compute_E,
+        1,section,1,Computing the median M,sec:task1_Compute_M,
+        2,section,1,Determining the upper limit K,sec:task1_Compute_K,
+        3,section,1,Generating a bar plot to visualize the discrete probability mass function,sec:task1_gen_PMF,
+        3,section,1,Justification of Tool Usage,sec:task1_just},
+    addtolist={4,figure,Task 1 - Bar plot to visualize the discrete probability mass function,fig:pmf_bar}]
+    %% The pdf file itself
+    {notebooks/task1.pdf}
+
+\includepdf[
+    %% Include all pages of the PDF
+    pages=-,
+    %% make this page have the usual page style
+    %% (you can change it to plain etc). By default pdfpages
+    %% sets the pagecommand to \pagestyle{empty}
+    pagecommand={\pagestyle{headings}},  
+    %% Add a "section" entry to the ToC with the heading
+    %% "Quilling Shapes" and the label "sec:shapes"
+    addtotoc={1,chapter,1,Task 2: Basic Probabilities and Visualizations - 2,chap:task1_pdf,
+        1,section,1,Finding the PDF,sec:task2_FindingPDF,
+        2,section,1,Calculating Waiting Probability,sec:task2_CalculatingWaitingProbability,
+        3,section,1,Calculating Mean,sec:task2_CalculatingMean,
+        3,section,1,Calculating Variance,sec:task2_CalculatingVariance,
+        4,section,1,Calculating Quartiles {Q1, Q2, Q3},sec:task2_CalculatingQuartiles,
+        4,section,1,Creating PDF Graph,sec:task2_CreatingPDFGraph,
+        5,section,1,Creating Histogram per Minutes,sec:task2_CreatingHistogramperMinutes},
+    addtolist={6,figure,Task 2 - Probability Density Function of Waiting Time,fig:t2_pdf,
+        8,figure,Task 2 - Histogram of Waiting Times per Minute,fig:t2_hist}]
+    %% The pdf file itself
+    {notebooks/task2.pdf}
+
+\includepdf[
+    %% Include all pages of the PDF
+    pages=-,
+    %% make this page have the usual page style
+    %% (you can change it to plain etc). By default pdfpages
+    %% sets the pagecommand to \pagestyle{empty}
+    pagecommand={\pagestyle{headings}},  
+    %% Add a "section" entry to the ToC with the heading
+    %% "Quilling Shapes" and the label "sec:shapes"
+    addtotoc={1,chapter,1,Task 3: Transformed Random Variables,chap:task3_pdf,
+        1,section,1,Express T and Assumptions,sec:task2_ExpressTandAssumptions:,
+        2,section,1,{Recognizing $f_S(s)$ as $\Gamma(k=7, \theta)$ and calculating $f_T(t)$ of the sum $T$},sec:task2_Recognizing,
+        2,section,1,Calculating the likelihood function,sec:task2_Calculatingthelikelihoodfunction,
+        2,section,1,Determining the upper limit K,sec:task1_Compute_K,
+        4,section,1,Estimate $\theta_{MLE}$,sec:task2_EstimateMLE,
+        6,section,1,Compute E{[T]},sec:task2_ComputeE,
+        6,section,1,Computing the Expectation of the Dual-Router-System,sec:task2_ComputeE,
+        7,section,1,Visualization 1: Fitted PDF and Sample Data,sec:task2_V1,
+        8,section,1,Visualization 2: Log-Likelihood Function $\ell(\theta)$,sec:task2_V2},
+    addtolist={8,figure,Task 3 - Fitted PDF and Sample Data,fig:t3v1pmf_bar,
+        10,figure,{Task 3 - Log-Likelihood Function $\ell(\theta)$},fig:t3v2pmf_bar}]
+    %% The pdf file itself
+    {notebooks/task3.pdf}
+
+\includepdf[
+    %% Include all pages of the PDF
+    pages=-,
+    %% make this page have the usual page style
+    %% (you can change it to plain etc). By default pdfpages
+    %% sets the pagecommand to \pagestyle{empty}
+    pagecommand={\pagestyle{headings}},  
+    %% Add a "section" entry to the ToC with the heading
+    %% "Quilling Shapes" and the label "sec:shapes"
+    addtotoc={1,chapter,1,Task 4: Hypothesis Test,chap:task4_pdf,
+        1,section,1,Model Proposal and Assumptions,sec:task4_ModelProposal,
+        2,section,1,Hypotheses Proposal,sec:task4_HypothesesProposal,
+        2,section,1,Test Statistic,sec:task4_TestStatistic,
+        2,section,1,Calculation of Observed Test Statistic,sec:task4_CalculationObserved,
+        3,section,1,Error Probabilities and Critical Value,sec:task4_Error,
+        4,section,1,Perform Test and Conclude,sec:task4_test,
+        4,section,1,Visualization of Test Results,sec:task4_vis},
+    addtolist={5,figure,Task 4 - Hypothesis Test for Mean Weight (Right-Tailed Z-Test),fig:t4pmf_bar}]
+    %% The pdf file itself
+    {notebooks/task4.pdf}
+
+\includepdf[
+    %% Include all pages of the PDF
+    pages=-,
+    %% make this page have the usual page style
+    %% (you can change it to plain etc). By default pdfpages
+    %% sets the pagecommand to \pagestyle{empty}
+    pagecommand={\pagestyle{headings}},  
+    %% Add a "section" entry to the ToC with the heading
+    %% "Quilling Shapes" and the label "sec:shapes"
+    addtotoc={1,chapter,1,Task 5: Regularized Regression,chap:task5_pdf,
+        1,section,1,Calculating $\boldsymbol{\alpha}{OLS}$ by minimizing the OLS cost function,sec:task5_COLS,
+        3,section,1,Calculating $\boldsymbol{\alpha}{Ridge}$ by minimizing the Ridge cost function,sec:task5_Cridge,
+        3,section,1,Specifying the Penalty Weight ($\lambda$),sec:task5_Cpenalty,
+        4,section,1,Discussing qualities of $\boldsymbol{\alpha}{OLS}$ and $\boldsymbol{\alpha}{Ridge}$ solutions,sec:task5_Discussing,
+        5,section,1,Visualization,sec:task5_Visualization:},
+    addtolist={4,table,Task 5 - Comparison of OLS vs. Ridge Regression,tab:t5table,
+        6,figure,Task 5 - Comparison of OLS vs. Ridge Regression,fig:t5pmf_bar}]
+    %% The pdf file itself
+    {notebooks/task5.pdf}
+
+\includepdf[
+    %% Include all pages of the PDF
+    pages=-,
+    %% make this page have the usual page style
+    %% (you can change it to plain etc). By default pdfpages
+    %% sets the pagecommand to \pagestyle{empty}
+    pagecommand={\pagestyle{headings}},  
+    %% Add a "section" entry to the ToC with the heading
+    %% "Quilling Shapes" and the label "sec:shapes"
+    addtotoc={1,chapter,1,Task 6: Bayesian Estimates,chap:task6_pdf,
+        1,section,1,The Posterior Distribution $\theta$,sec:task6_tp,
+        3,section,1,Bayes Point Estimate (Square-Error Loss Function),sec:task6_BayesPoint,
+        3,section,1,Bayes Point Estimate (Mode of Posterior Distribution),sec:task6_bpm},
+    addtolist={4,table,Task 6 - Summary of Results,tab:t6sr}]
+    %% The pdf file itself
+    {notebooks/task6.pdf}
+
+\chapter{Code Repository}
+\vspace*{-25pt}
+The source code for this project is available on GitHub at: 
+
+\url{https://github.com/HimanshuPhoenix/DLMDSAS01-Advanced_Statistics_Workbook.git}
+\phantom{\parencite[p.~22]{con:coursebook} 
+\parencite{wikiGeoDist}}
+%Collection \parencite{sammelband} 
+
+%Article \parencite{article1}
+%\chapter{Bibliography}
+%\addcontentsline{toc}{Chapter}{Bibliography}
+\printbibliography[heading=bibintoc]
+\vspace*{-25pt}
